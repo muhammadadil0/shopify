@@ -1,0 +1,40 @@
+{
+    "sections": {
+        "hero": {
+            "type": "hero",
+            "settings": {}
+        },
+        "trust_badges": {
+            "type": "trust-badges",
+            "settings": {}
+        },
+        "categories": {
+            "type": "home-categories",
+            "settings": {}
+        },
+        "featured_products": {
+            "type": "featured-collection",
+            "settings": {
+                "title": "FEATURED PRODUCTS"
+            }
+        },
+        "authenticity": {
+            "type": "authenticity-banner",
+            "settings": {}
+        },
+        "recent_products": {
+            "type": "featured-collection",
+            "settings": {
+                "title": "RECENTLY ADDED"
+            }
+        }
+    },
+    "order": [
+        "hero",
+        "trust_badges",
+        "categories",
+        "featured_products",
+        "authenticity",
+        "recent_products"
+    ]
+}

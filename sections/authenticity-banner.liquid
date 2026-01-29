@@ -1,0 +1,64 @@
+<section class="authenticity">
+  <div class="container authenticity__content">
+    <div class="authenticity__card">
+      <h2 class="serif">{{ section.settings.title }}</h2>
+      <p>{{ section.settings.subtitle }}</p>
+
+      <div class="authenticity__list">
+        <div class="authenticity__item">
+          <div class="authenticity__icon">📷</div>
+          <div>
+            <strong>Natural Light Photography</strong>
+            <p style="font-size: 0.8rem; color: #666;">All gems are captured in natural daylight — so colors and clarity appear just as they do in person.</p>
+          </div>
+        </div>
+        <div class="authenticity__item">
+          <div class="authenticity__icon">🔄</div>
+          <div>
+            <strong>Multiple Viewing Angles</strong>
+            <p style="font-size: 0.8rem; color: #666;">We display each gemstone from multiple sides to offer a complete and honest representation.</p>
+          </div>
+        </div>
+        <div class="authenticity__item">
+          <div class="authenticity__icon">🔍</div>
+          <div>
+            <strong>Visible Inclusions</strong>
+            <p style="font-size: 0.8rem; color: #666;">No hidden flaws — we highlight natural features as they are to avoid surprises.</p>
+          </div>
+        </div>
+        <div class="authenticity__item">
+          <div class="authenticity__icon">💎</div>
+          <div>
+            <strong>100% Natural Gemstones</strong>
+            <p style="font-size: 0.8rem; color: #666;">Each gem is ethically sourced, untreated unless noted, and independently verified for authenticity.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Authenticity Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "AUTHENTICITY YOU CAN SEE"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "We don’t just claim transparency — we show it, with real light and real stones."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Authenticity Banner"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Theme settings",
+    "theme_name": "Zadran Gems Premium",
+    "theme_version": "1.0.0",
+    "theme_author": "Antigravity",
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://support.shopify.com"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "colors_text",
+        "label": "Text",
+        "default": "#2c2c2c"
+      },
+      {
+        "type": "color",
+        "id": "colors_background",
+        "label": "Background",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "colors_accent",
+        "label": "Accent color",
+        "default": "#d17a5d"
+      }
+    ]
+  }
+]

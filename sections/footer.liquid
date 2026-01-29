@@ -1,0 +1,120 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <!-- About Us -->
+      <div class="footer__col">
+        <h3 class="footer__title">ABOUT US</h3>
+        <div class="footer__address">
+          <p><strong>Pakistan Office:</strong> Flat No 12, MC Plaza, Namak Mandi Chowk, Peshawar, Khyber Pakhtunkhwa, Pakistan</p>
+          <p><strong>Company Name:</strong> Zadran Gems (Pvt) Ltd</p>
+          <p><strong>Registration Number:</strong> 0221408</p>
+          <br>
+          <p><strong>UK Registered Office:</strong> 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ, UNITED KINGDOM</p>
+          <p><strong>Company Name:</strong> Zadran Gems Ltd</p>
+          <p><strong>Registration Number:</strong> 13578178</p>
+        </div>
+        <div class="footer__socials">
+          <a href="#">FB</a> <a href="#">IG</a> <a href="#">TK</a> <a href="#">PN</a> <a href="#">YT</a>
+        </div>
+      </div>
+
+      <!-- Recent Posts -->
+      <div class="footer__col">
+        <h3 class="footer__title">RECENT POSTS</h3>
+        <ul class="footer__posts">
+          <li><a href="#">The Ultimate Guide to Grandidierite...</a></li>
+          <li><a href="#">Londonite: Exploring Its Unique...</a></li>
+          <li><a href="#">The Most Brilliant Gemstones...</a></li>
+        </ul>
+      </div>
+
+      <!-- Categories -->
+      <div class="footer__col">
+        <h3 class="footer__title">PRODUCT CATEGORIES</h3>
+        <ul class="footer__list">
+          <li>Aquamarine</li>
+          <li>Tourmaline</li>
+          <li>Quartz</li>
+          <li>Amethyst</li>
+          <li>Topaz</li>
+          <li>Afghanite</li>
+          <li>Fluorite</li>
+          <li>Lapis</li>
+          <li>Garnets</li>
+          <li>Peridot</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="footer__copyright">
+        &copy; {{ 'now' | date: "%Y" }} Zadran Gems. All Rights Reserved.
+      </div>
+      <div class="footer__pay-icons">
+        <span>PayPal</span> <span>Visa</span> <span>Mastercard</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: #1a1a1a;
+    color: #ccc;
+    padding: 5rem 0 2rem;
+    font-size: 0.9rem;
+  }
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1.5fr;
+    gap: 4rem;
+  }
+  .footer__title {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-primary);
+    display: inline-block;
+  }
+  .footer__col p {
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+  }
+  .footer__list, .footer__posts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .footer__list li, .footer__posts li {
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #333;
+    padding-bottom: 0.5rem;
+  }
+  .footer__list li::before {
+    content: '•';
+    color: var(--color-primary);
+    margin-right: 10px;
+  }
+  .footer__socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .footer__bottom {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": []
+}
+{% endschema %}

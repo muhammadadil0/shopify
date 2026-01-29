@@ -1,0 +1,49 @@
+<div class="header-wrapper">
+  <div class="container header">
+    <div class="header__logo">
+      <a href="{{ routes.root_url }}">
+        {% if section.settings.logo != blank %}
+          <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}">
+        {% else %}
+          <span class="h1">{{ shop.name }}</span>
+        {% endif %}
+      </a>
+    </div>
+
+    <nav class="header__nav">
+      <ul>
+        {% for link in section.settings.menu.links %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <div class="header__icons">
+      <a href="/account/login" class="header__icon">Login / Register</a>
+      <a href="/pages/wishlist" class="header__icon">Wishlist <span class="heart-icon">♥</span></a>
+      <a href="/cart" class="header__icon">
+        Cart / {{ cart.total_price | money }}
+        <span class="cart-count">[{{ cart.item_count }}]</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

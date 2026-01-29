@@ -1,0 +1,124 @@
+<section class="home-categories">
+  <div class="container">
+    <div class="section-title">
+      <h2>BROWSE OUR CATEGORIES</h2>
+    </div>
+    
+    <!-- Top Level Categories -->
+    <div class="category-circles">
+      <div class="category-item">
+        <div class="category-item__image">💎</div>
+        <h3>JEWELRY</h3>
+        <ul>
+          <li>Necklaces</li>
+          <li>Bracelets</li>
+          <li>Earrings</li>
+          <li>Rings</li>
+        </ul>
+      </div>
+      <div class="category-item">
+        <div class="category-item__image">⚒️</div>
+        <h3>SPECIMENS</h3>
+        <ul>
+          <li>Aquamarine</li>
+          <li>Tourmaline</li>
+          <li>Quartz</li>
+          <li>Amethyst</li>
+        </ul>
+      </div>
+      <div class="category-item">
+        <div class="category-item__image">📦</div>
+        <h3>WHOLESALE</h3>
+        <p>Bulk Gemstone Deals</p>
+      </div>
+    </div>
+
+    <!-- Specific Specimen List -->
+    <div class="specimen-tags">
+      <span>Aquamarine</span>
+      <span>Tourmaline</span>
+      <span>Quartz</span>
+      <span>Amethyst</span>
+      <span>Topaz</span>
+      <span>Afghanite</span>
+      <span>Fluorite</span>
+      <span>Lapis</span>
+      <span>Garnets</span>
+      <span>Peridot</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .home-categories {
+    padding: 4rem 0;
+    background: #fdfcfb;
+  }
+  .category-circles {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+  .category-item {
+    text-align: center;
+    width: 200px;
+  }
+  .category-item__image {
+    width: 120px;
+    height: 120px;
+    background: white;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+  }
+  .category-item h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+  }
+  .category-item ul {
+    list-style: none;
+    padding: 0;
+    font-size: 0.85rem;
+    color: #666;
+  }
+  .category-item li { margin-bottom: 0.3rem; }
+
+  .specimen-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .specimen-tags span {
+    padding: 0.5rem 1.5rem;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    transition: 0.3s;
+  }
+  .specimen-tags span:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Home Categories",
+  "presets": [
+    {
+      "name": "Home Categories"
+    }
+  ]
+}
+{% endschema %}

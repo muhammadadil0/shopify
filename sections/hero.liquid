@@ -1,0 +1,70 @@
+<section class="hero">
+  <div class="hero__image-bg">
+    {% if section.settings.image != blank %}
+      <img src="{{ section.settings.image | image_url: width: 2000 }}" alt="{{ section.settings.title }}">
+    {% else %}
+      <img src="{{ 'hero-bg.png' | asset_url }}" alt="Zadran Gems Hero">
+    {% endif %}
+  </div>
+
+  <div class="container hero__content">
+    <div class="hero__text-box">
+      <div class="hero__welcome">{{ section.settings.sub_title }}</div>
+      <h1 class="hero__title">{{ section.settings.title }}</h1>
+      <div class="hero__subtitle">
+        {{ section.settings.text }}
+      </div>
+      <a href="{{ section.settings.button_link }}" class="button-primary">
+        {{ section.settings.button_label }} 
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero Background"
+    },
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": "Small Heading",
+      "default": "Welcome To"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Main Title",
+      "default": "ZADRAN GEMS 100% NATURAL"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "Bringing the beauty of natural gemstones to the world while upholding honesty and customer satisfaction"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "EXPLORE THE SHOP"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Section"
+    }
+  ]
+}
+{% endschema %}
