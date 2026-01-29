@@ -1,0 +1,59 @@
+<div class="announcement-bar">
+  <div class="container announcement-bar__container">
+    <p class="announcement-bar__message">{{ section.settings.text }}</p>
+    {% if section.settings.link != blank %}
+      <a href="{{ section.settings.link }}" class="announcement-bar__link">Shop Now</a>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .announcement-bar {
+    background: #111;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .announcement-bar__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .announcement-bar__message {
+    margin: 0;
+  }
+  .announcement-bar__link {
+    color: var(--color-primary);
+    text-decoration: underline;
+    font-weight: 700;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Announcement Text",
+      "default": "✨ SPECIAL OFFER: 20% OFF ALL NATURAL GEMSTONES - BUY NOW"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement Bar"
+    }
+  ]
+}
+{% endschema %}
