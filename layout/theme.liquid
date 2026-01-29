@@ -38,13 +38,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <style>
+      {%- assign header_font = settings.type_header_font -%}
+      {%- assign body_font = settings.type_body_font -%}
+
+      {{ header_font | font_face: font_display: 'swap' }}
+      {{ body_font | font_face: font_display: 'swap' }}
+
       :root {
-        --font-body-family: 'Outfit', sans-serif;
-        --font-heading-family: 'Playfair Display', serif;
-        --color-primary: #d17a5d; /* From the button in image */
-        --color-text: #2c2c2c;
-        --color-bg: #ffffff;
-        --color-accent: #f9f9f9;
+        --font-body-family: {{ body_font.family }}, {{ body_font.fallback_families }};
+        --font-heading-family: {{ header_font.family }}, {{ header_font.fallback_families }};
+        
+        --color-primary: {{ settings.color_primary }};
+        --color-text: {{ settings.color_text }};
+        --color-bg: {{ settings.color_background }};
+        --color-accent: {{ settings.color_secondary_bg }};
+        
+        --container-width: {{ settings.container_width }}px;
       }
     </style>
   </head>
