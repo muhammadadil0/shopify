@@ -6,10 +6,144 @@
         },
         "trust_badges": {
             "type": "trust-badges",
+            "blocks": {
+                "badge_1": {
+                    "type": "badge",
+                    "settings": {
+                        "title": "Free Shipping",
+                        "emoji_icon": "🚚"
+                    }
+                },
+                "badge_2": {
+                    "type": "badge",
+                    "settings": {
+                        "title": "Money Back",
+                        "emoji_icon": "💰"
+                    }
+                },
+                "badge_3": {
+                    "type": "badge",
+                    "settings": {
+                        "title": "Secure Payments",
+                        "emoji_icon": "🛡️"
+                    }
+                },
+                "badge_4": {
+                    "type": "badge",
+                    "settings": {
+                        "title": "Star Seller",
+                        "emoji_icon": "⭐"
+                    }
+                }
+            },
+            "block_order": [
+                "badge_1",
+                "badge_2",
+                "badge_3",
+                "badge_4"
+            ],
             "settings": {}
         },
         "categories": {
             "type": "home-categories",
+            "blocks": {
+                "cat_1": {
+                    "type": "category",
+                    "settings": {
+                        "title": "JEWELRY",
+                        "text": "<p>Necklaces, Bracelets, Rings</p>"
+                    }
+                },
+                "cat_2": {
+                    "type": "category",
+                    "settings": {
+                        "title": "SPECIMENS",
+                        "text": "<p>Aquamarine, Tourmaline, Quartz</p>"
+                    }
+                },
+                "cat_3": {
+                    "type": "category",
+                    "settings": {
+                        "title": "WHOLESALE",
+                        "text": "<p>Bulk Gemstone Deals</p>"
+                    }
+                },
+                "tag_1": {
+                    "type": "tag",
+                    "settings": {
+                        "title": "Aquamarine"
+                    }
+                },
+                "tag_2": {
+                    "type": "tag",
+                    "settings": {
+                        "title": "Tourmaline"
+                    }
+                },
+                "tag_3": {
+                    "type": "tag",
+                    "settings": {
+                        "title": "Quartz"
+                    }
+                },
+                "tag_4": {
+                    "type": "tag",
+                    "settings": {
+                        "title": "Amethyst"
+                    }
+                },
+                "tag_5": {
+                    "type": "tag",
+                    "settings": {
+                        "title": "Topaz"
+                    }
+                },
+                "tag_6": {
+                    "type": "tag",
+                    "settings": {
+                        "title": "Afghanite"
+                    }
+                },
+                "tag_7": {
+                    "type": "tag",
+                    "settings": {
+                        "title": "Fluorite"
+                    }
+                },
+                "tag_8": {
+                    "type": "tag",
+                    "settings": {
+                        "title": "Lapis"
+                    }
+                },
+                "tag_9": {
+                    "type": "tag",
+                    "settings": {
+                        "title": "Garnets"
+                    }
+                },
+                "tag_10": {
+                    "type": "tag",
+                    "settings": {
+                        "title": "Peridot"
+                    }
+                }
+            },
+            "block_order": [
+                "cat_1",
+                "cat_2",
+                "cat_3",
+                "tag_1",
+                "tag_2",
+                "tag_3",
+                "tag_4",
+                "tag_5",
+                "tag_6",
+                "tag_7",
+                "tag_8",
+                "tag_9",
+                "tag_10"
+            ],
             "settings": {}
         },
         "featured_products": {

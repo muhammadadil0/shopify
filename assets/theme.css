@@ -576,15 +576,11 @@ h5,
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: all 0.2s;
-    opacity: 0;
-    transform: translateY(10px);
+    opacity: 1;
+    transform: translateY(0);
     z-index: 10;
 }
 
-.product-card:hover .wishlist-btn {
-    opacity: 1;
-    transform: translateY(0);
-}
 
 .wishlist-btn:hover {
     background: var(--color-primary);
