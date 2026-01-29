@@ -21,16 +21,7 @@
       <div class="product-grid">
         {% for item in search.results %}
           {% if item.object_type == 'product' %}
-            <div class="product-card">
-              <a href="{{ item.url }}" class="product-card__link">
-                <div class="product-card__image">
-                  <img src="{{ item.featured_image | image_url: width: 600 }}" alt="{{ item.title }}">
-                </div>
-                <div class="product-card__category">{{ item.collections.first.title }}</div>
-                <h3 class="product-card__title">{{ item.title }}</h3>
-                <div class="product-card__price">{{ item.price | money }}</div>
-              </a>
-            </div>
+            {% render 'card-product', product: item, show_vendor: true %}
           {% endif %}
         {% endfor %}
       </div>

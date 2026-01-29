@@ -5,16 +5,7 @@
 
   <div class="product-grid">
     {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
-      <div class="product-card">
-        <a href="{{ product.url }}" class="product-card__link">
-          <div class="product-card__image">
-            <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}">
-          </div>
-          <div class="product-card__category">{{ product.collections.first.title }}</div>
-          <h3 class="product-card__title">{{ product.title }}</h3>
-          <div class="product-card__price">{{ product.price | money }}</div>
-        </a>
-      </div>
+      {% render 'card-product', product: product, show_vendor: false %}
     {%- else -%}
       {%- assign placeholder_images = 'placeholder-ruby.png,placeholder-emerald.png,placeholder-sapphire.png,placeholder-diamond.png' | split: ',' -%}
       {%- for i in (1..4) -%}

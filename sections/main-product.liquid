@@ -1,0 +1,159 @@
+<section class="main-product" id="MainProduct-{{ section.id }}" data-section="{{ section.id }}">
+  <div class="container product-container">
+    <div class="product-media">
+      {%- if product.selected_or_first_available_variant.featured_image != blank -%}
+        {% assign featured_image = product.selected_or_first_available_variant.featured_image %}
+      {%- else -%}
+        {% assign featured_image = product.featured_image %}
+      {%- endif -%}
+
+      <div class="product-media__main">
+        {% if featured_image != blank %}
+          <img src="{{ featured_image | image_url: width: 1000 }}" alt="{{ product.title }}">
+        {% else %}
+           {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="product-info">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when '@app' -%}
+            {% render block %}
+          
+          {%- when 'title' -%}
+            <h1 class="product-title serif" {{ block.shopify_attributes }}>
+              {{ product.title | escape }}
+            </h1>
+
+          {%- when 'price' -%}
+            <div class="product-price" id="price-{{ section.id }}" {{ block.shopify_attributes }}>
+              {{ product.price | money }}
+              {% if product.compare_at_price > product.price %}
+                <s class="price-compare">{{ product.compare_at_price | money }}</s>
+              {% endif %}
+            </div>
+
+          {%- when 'description' -%}
+            <div class="product-description rte" {{ block.shopify_attributes }}>
+              {{ product.description }}
+            </div>
+
+          {%- when 'buy_buttons' -%}
+            <div {{ block.shopify_attributes }}>
+              {%- form 'product', product, id: 'product-form', class: 'product-form' -%}
+                <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                <button type="submit" name="add" class="button-primary full-width">
+                  <span>
+                    {%- if product.selected_or_first_available_variant.available -%}
+                      Add to Cart
+                    {%- else -%}
+                      Sold Out
+                    {%- endif -%}
+                  </span>
+                </button>
+              {%- endform -%}
+            </div>
+          
+          {%- when 'share' -%}
+            <div class="product-share" {{ block.shopify_attributes }}>
+              <a href="https://www.facebook.com/sharer.php?u={{ shop.url | append: product.url }}" target="_blank">Share</a>
+            </div>
+            
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Simple variant selector logic would go here
+</script>
+
+<style>
+  .product-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    padding: 4rem 2rem;
+  }
+  
+  .product-media__main img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .product-title {
+    font-size: 2.5rem;
+    line-height: 1.1;
+  }
+
+  .product-price {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .price-compare {
+    color: #999;
+    font-size: 1rem;
+    margin-left: 10px;
+    font-weight: 400;
+  }
+  
+  .full-width {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  @media(max-width: 768px) {
+    .product-container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Product Information",
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1
+    },
+    {
+      "type": "price",
+      "name": "Price",
+      "limit": 1
+    },
+    {
+      "type": "description",
+      "name": "Description",
+      "limit": 1
+    },
+    {
+      "type": "buy_buttons",
+      "name": "Buy Buttons",
+      "limit": 1
+    },
+    {
+      "type": "share",
+      "name": "Share",
+      "limit": 1
+    }
+  ]
+}
+{% endschema %}
