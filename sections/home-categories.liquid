@@ -1,59 +1,136 @@
 <section class="home-categories">
   <div class="container">
-    <div class="section-title">
-      <h2>BROWSE OUR CATEGORIES</h2>
-    </div>
+    {% if section.settings.title != blank %}
+      <div class="section-title">
+        <h2>{{ section.settings.title }}</h2>
+      </div>
+    {% endif %}
     
-    <!-- Top Level Categories -->
     <div class="category-circles">
-      <div class="category-item">
-        <div class="category-item__image">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-hexagon"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
-        </div>
-        <h3>JEWELRY</h3>
-        <ul>
-          <li>Necklaces</li>
-          <li>Bracelets</li>
-          <li>Earrings</li>
-          <li>Rings</li>
-        </ul>
-      </div>
-      <div class="category-item">
-        <div class="category-item__image">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-stop-circle"><circle cx="12" cy="12" r="10"></circle><rect x="9" y="9" width="6" height="6"></rect></svg>
-        </div>
-        <h3>SPECIMENS</h3>
-        <ul>
-          <li>Aquamarine</li>
-          <li>Tourmaline</li>
-          <li>Quartz</li>
-          <li>Amethyst</li>
-        </ul>
-      </div>
-      <div class="category-item">
-        <div class="category-item__image">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-package"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-        </div>
-        <h3>WHOLESALE</h3>
-        <p>Bulk Gemstone Deals</p>
-      </div>
+      {% for block in section.blocks %}
+        {% if block.type == 'category' %}
+          <div class="category-item" {{ block.shopify_attributes }}>
+            <a href="{{ block.settings.link }}" class="category-link">
+              <div class="category-item__image">
+                {% if block.settings.image != blank %}
+                  <img src="{{ block.settings.image | image_url: width: 100 }}" alt="{{ block.settings.title }}">
+                {% else %}
+                  {{ block.settings.icon_svg }}
+                {% endif %}
+              </div>
+              <h3>{{ block.settings.title }}</h3>
+            </a>
+            <div class="category-item__text">{{ block.settings.text }}</div>
+          </div>
+        {% endif %}
+      {% endfor %}
     </div>
 
-    <!-- Specific Specimen List -->
     <div class="specimen-tags">
-      <span>Aquamarine</span>
-      <span>Tourmaline</span>
-      <span>Quartz</span>
-      <span>Amethyst</span>
-      <span>Topaz</span>
-      <span>Afghanite</span>
-      <span>Fluorite</span>
-      <span>Lapis</span>
-      <span>Garnets</span>
-      <span>Peridot</span>
+      {% for block in section.blocks %}
+        {% if block.type == 'tag' %}
+          <a href="{{ block.settings.link }}" class="specimen-tag" {{ block.shopify_attributes }}>
+            {{ block.settings.title }}
+          </a>
+        {% endif %}
+      {% endfor %}
     </div>
   </div>
 </section>
+
+<style>
+  .category-link { text-decoration: none; color: inherit; }
+  .category-item__text { font-size: 0.85rem; color: #666; line-height: 1.4; }
+  .specimen-tag {
+    padding: 0.6rem 2rem;
+    background: white;
+    border: 1px solid #eee;
+    display: inline-block;
+    color: #444;
+    text-decoration: none;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Home Categories",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Heading",
+      "default": "BROWSE OUR CATEGORIES"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "JEWELRY"
+        },
+        {
+          "type": "textarea",
+          "id": "icon_svg",
+          "label": "Icon (SVG Code)",
+          "info": "Paste SVG code here"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Or use Image"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Sub-items / Text",
+          "default": "<p>Necklaces, Bracelets, Rings</p>"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "tag",
+      "name": "Gemstone Tag",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Tag Title",
+          "default": "Aquamarine"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Categories",
+      "blocks": [
+        { "type": "category", "settings": { "title": "JEWELRY" } },
+        { "type": "category", "settings": { "title": "SPECIMENS" } },
+        { "type": "category", "settings": { "title": "WHOLESALE" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
 
 <style>
   .home-categories {
