@@ -470,15 +470,20 @@ h5,
 /* Search Page Styles */
 .search-form {
     display: flex;
-    max-width: 900px;
-    margin: 0;
-    /* Align left as requested */
+    max-width: 800px;
+    margin: 0 auto;
+    /* Centered */
     position: relative;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
     overflow: hidden;
     background: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.3s ease;
+}
+
+.search-form:hover {
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
 }
 
 .search-form__input-wrapper {
@@ -490,7 +495,7 @@ h5,
 
 .search-form input[type="text"] {
     width: 100%;
-    padding: 1.2rem 1rem 1.2rem 3.5rem;
+    padding: 1.5rem 1rem 1.5rem 4rem;
     border: none;
     font-family: var(--font-body-family);
     font-size: 1.1rem;
@@ -500,22 +505,22 @@ h5,
 
 .search-form svg {
     position: absolute;
-    left: 1.2rem;
+    left: 1.5rem;
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
-    opacity: 0.6;
+    opacity: 0.5;
 }
 
 .search-form .button-primary {
     border: none;
-    padding: 0 2.5rem;
+    padding: 0 3.5rem;
     cursor: pointer;
     background-color: var(--color-primary);
     color: white !important;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     transition: all 0.3s;
     height: auto;
     display: flex;
@@ -528,10 +533,9 @@ h5,
 }
 
 .search-header {
-    text-align: left !important;
-    /* Align header left too */
+    text-align: center !important;
+    margin-bottom: 4rem;
 }
-
 
 .search-form .button-primary:hover {
     background-color: #b56246;
