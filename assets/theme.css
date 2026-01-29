@@ -502,18 +502,23 @@ h5,
 
 .search-form .button-primary {
     border: none;
-    padding: 0 3rem;
+    padding: 0 2rem;
     cursor: pointer;
     background-color: var(--color-primary);
     color: white !important;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     transition: background 0.3s;
     height: auto;
     display: flex;
     align-items: center;
+    justify-content: center;
     margin: 0;
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    min-width: 120px;
 }
 
 .search-form .button-primary:hover {
