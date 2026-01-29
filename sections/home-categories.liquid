@@ -11,14 +11,17 @@
         {% if block.type == 'category' %}
           <div class="category-item" {{ block.shopify_attributes }}>
             <a href="{{ block.settings.link }}" class="category-link">
-              <div class="category-item__image">
-                {% if block.settings.image != blank %}
-                  <img src="{{ block.settings.image | image_url: width: 100 }}" alt="{{ block.settings.title }}">
-                {% else %}
-                  {{ block.settings.icon_svg }}
-                {% endif %}
+              <div class="category-item__image-wrapper">
+                <div class="category-item__image">
+                  {% if block.settings.image != blank %}
+                    <img src="{{ block.settings.image | image_url: width: 100 }}" alt="{{ block.settings.title }}" loading="lazy">
+                  {% else %}
+                    <!-- Use a default placeholder or the text icon if provided -->
+                     <span class="category-icon">{{ block.settings.icon_svg }}</span>
+                  {% endif %}
+                </div>
               </div>
-              <h3>{{ block.settings.title }}</h3>
+              <h3 class="category-item__title">{{ block.settings.title }}</h3>
             </a>
             <div class="category-item__text">{{ block.settings.text }}</div>
           </div>
@@ -39,19 +42,149 @@
 </section>
 
 <style>
-  .category-link { text-decoration: none; color: inherit; }
-  .category-item__text { font-size: 0.85rem; color: #666; line-height: 1.4; }
+  .home-categories {
+    padding: 6rem 0;
+    background: linear-gradient(to bottom, #ffffff, #faf9f8);
+  }
+  
+  .category-circles {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    margin-bottom: 5rem;
+    flex-wrap: wrap;
+  }
+  
+  .category-item {
+    text-align: center;
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .category-link { 
+    text-decoration: none; 
+    color: inherit; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    group: hover;
+  }
+  
+  .category-item__image-wrapper {
+    margin-bottom: 2rem;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .category-item:hover .category-item__image-wrapper {
+    transform: translateY(-10px);
+  }
+  
+  .category-item__image {
+    width: 120px;
+    height: 120px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* More premium shadow */
+    border: 1px solid rgba(0,0,0,0.03);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  .category-item:hover .category-item__image {
+     box-shadow: 0 15px 40px rgba(209, 122, 93, 0.15); /* Colored glow on hover */
+     border-color: rgba(209, 122, 93, 0.2);
+  }
+  
+  .category-icon svg {
+    width: 48px;
+    height: 48px;
+    stroke-width: 1.5;
+  }
+  
+  .category-item__title {
+    font-size: 1.25rem;
+    margin: 0 0 1rem 0;
+    letter-spacing: 2px;
+    font-family: var(--font-heading-family);
+    text-transform: uppercase;
+    color: #111;
+    position: relative;
+    padding-bottom: 10px;
+  }
+
+  .category-item__title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 1px;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
+  }
+
+  .category-item:hover .category-item__title::after {
+    width: 40px;
+  }
+
+  .category-item__text { 
+    font-size: 0.9rem; 
+    color: #666; 
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  
+  .category-item__text p { margin: 0; }
+
+  /* Tags Styling */
+  .specimen-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 4rem;
+    padding-top: 4rem;
+    border-top: 1px solid #efefef;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
   .specimen-tag {
-    padding: 0.6rem 2rem;
+    padding: 0.8rem 2.5rem;
     background: white;
-    border: 1px solid #eee;
-    display: inline-block;
-    color: #444;
+    border: 1px solid #e0e0e0;
+    color: #555;
     text-decoration: none;
     font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: 0.3s;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+    border-radius: 50px; /* Pill shape */
+    font-weight: 500;
+  }
+
+  .specimen-tag:hover {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(209, 122, 93, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    .category-circles {
+      gap: 3rem;
+    }
+    .category-item {
+      width: 100%;
+    }
   }
 </style>
 
@@ -127,90 +260,6 @@
         { "type": "category", "settings": { "title": "SPECIMENS" } },
         { "type": "category", "settings": { "title": "WHOLESALE" } }
       ]
-    }
-  ]
-}
-{% endschema %}
-
-<style>
-  .home-categories {
-    padding: 6rem 0;
-    background: #fff;
-  }
-  .category-circles {
-    display: flex;
-    justify-content: center;
-    gap: 4rem;
-    margin-bottom: 4rem;
-  }
-  .category-item {
-    text-align: center;
-    width: 220px;
-    transition: transform 0.3s;
-  }
-  .category-item:hover {
-    transform: translateY(-5px);
-  }
-  .category-item__image {
-    width: 100px;
-    height: 100px;
-    background: #fdfcfb;
-    border-radius: 50%;
-    margin: 0 auto 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-primary);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    border: 1px solid #f0f0f0;
-  }
-  .category-item h3 {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    letter-spacing: 2px;
-    font-family: var(--font-heading-family);
-  }
-  .category-item ul {
-    list-style: none;
-    padding: 0;
-    font-size: 0.9rem;
-    color: #555;
-  }
-  .category-item li { margin-bottom: 0.5rem; }
-
-  .specimen-tags {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.8rem;
-    margin-top: 3rem;
-    padding-top: 3rem;
-    border-top: 1px solid #f5f5f5;
-  }
-  .specimen-tags span {
-    padding: 0.6rem 2rem;
-    background: white;
-    border: 1px solid #eee;
-    border-radius: 2px;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: 0.3s;
-    color: #444;
-  }
-  .specimen-tags span:hover {
-    border-color: var(--color-primary);
-    color: white;
-    background-color: var(--color-primary);
-  }
-</style>
-
-{% schema %}
-{
-  "name": "Home Categories",
-  "presets": [
-    {
-      "name": "Home Categories"
     }
   ]
 }
