@@ -283,6 +283,7 @@ h5,
     aspect-ratio: 1/1;
     overflow: hidden;
     margin-bottom: 1rem;
+    position: relative;
 }
 
 .product-card__image img {

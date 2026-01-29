@@ -51,21 +51,24 @@
                     "type": "category",
                     "settings": {
                         "title": "JEWELRY",
-                        "text": "<p>Necklaces, Bracelets, Rings</p>"
+                        "text": "<p>Necklaces, Bracelets, Rings</p>",
+                        "icon_svg": "<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><polygon points='6 3 18 3 22 9 12 22 2 9 6 3'></polygon></svg>"
                     }
                 },
                 "cat_2": {
                     "type": "category",
                     "settings": {
                         "title": "SPECIMENS",
-                        "text": "<p>Aquamarine, Tourmaline, Quartz</p>"
+                        "text": "<p>Aquamarine, Tourmaline, Quartz</p>",
+                        "icon_svg": "<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M21 11.08c-.7-.78-2.58-.26-3.8 1.48-1.55 2.2-2.3 3.4-3.5 3.4-1.32 0-.25-2.67-2.7-5.12S5.9 8 4.5 8c-1.4 0-2.3 2.9-1.5 5.2 2.23 6.3 8.35 6.8 14.2 3.8h.1c2.1-1.1 2.9-2.2 2.85-3.6 0-1.25-.9-1.63-2.15-2.32z'></path></svg>"
                     }
                 },
                 "cat_3": {
                     "type": "category",
                     "settings": {
                         "title": "WHOLESALE",
-                        "text": "<p>Bulk Gemstone Deals</p>"
+                        "text": "<p>Bulk Gemstone Deals</p>",
+                        "icon_svg": "<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z'></path><polyline points='3.27 6.96 12 12.01 20.73 6.96'></polyline><line x1='12' y1='22.08' x2='12' y2='12'></line></svg>"
                     }
                 },
                 "tag_1": {
